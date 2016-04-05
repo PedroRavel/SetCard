@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Deck.h"
+#import "CardMatchingGame.h"
 @interface CardViewController : UIViewController
+@property (weak, readonly) IBOutlet UILabel *gameText;
+@property (strong, nonatomic) CardMatchingGame *game;
+@property (strong, readonly) NSMutableArray *getit;
+-(Deck *)createDeck;
 
 @end

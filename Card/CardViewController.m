@@ -7,23 +7,52 @@
 //
 
 #import "CardViewController.h"
-
+#import "Deck.h"
+#import "PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 @interface CardViewController ()
 
+
+
+
+
+@property (strong, readwrite) NSMutableArray *getit;
+
+
+
+//@property (strong, nonatomic) CardMatchingGame *game;
 @end
 
 @implementation CardViewController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+-(CardMatchingGame *)game{
+    if(!_game)_game = [[CardMatchingGame alloc] initWithCardCount:52 usingDeck:[self createDeck]];
+    return _game;
+}
+-(NSMutableArray *)getit{
+    if(!_getit)_getit = [[NSMutableArray alloc] init];
+    return _getit;
 }
 
-- (void)didReceiveMemoryWarning
+
+//abstract method
+-(Deck *) createDeck
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+   
+    return nil;
 }
+
+
+
+-(void)updateUI{
+  
+}
+
+-(NSString *)titleForCard:(Card *)card{
+    return card.isChsoen ? card.contents : @"";
+}
+-(UIImage *)backgroundImageForCard:(Card *)card{
+    return [UIImage imageNamed:card.isChsoen ? @"cardfront" : @"cardBack"];
+}
+
 
 @end
